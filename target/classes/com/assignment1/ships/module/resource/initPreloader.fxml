@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="289.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.launcher.InitPreloader">
+    <children>
+        <Label fx:id="lblLoading" contentDisplay="TOP" layoutX="15.0" layoutY="252.0" text="loading..." AnchorPane.bottomAnchor="19.399999999999977" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.400000000000091" />
+        <ProgressBar blendMode="DARKEN" layoutX="15.0" layoutY="156.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="14.0" text="LogiTrack" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="14.0">
+            <font>
+                <Font name="System Bold Italic" size="28.0" />
+            </font>
+        </Label>
+      <ImageView fitHeight="277.0" fitWidth="480.0" layoutX="189.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/dock.jpg" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>
