@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="928.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.AddPortController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="928.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.PortController">
 
    <children>
       <BorderPane prefHeight="627.0" prefWidth="928.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
          <top>
             <AnchorPane prefHeight="79.0" prefWidth="961.0" style="-fx-background-color: #1d2e68;" BorderPane.alignment="CENTER">
                <children>
@@ -23,60 +23,31 @@
                         <Font name="System Bold Italic" size="36.0" />
                      </font>
                   </Text>
-                  <FontAwesomeIconView fill="WHITE" glyphName="LIST" layoutX="860.0" layoutY="50.0" selectionFill="#fffdfd" size="30" wrappingWidth="35.19989013671875" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="806.0" layoutY="51.0" size="30" text="" wrappingWidth="25.60009765625" />
-                  <FontAwesomeIconView fill="#fffcfc" glyphName="SEARCH" layoutX="749.0" layoutY="50.0" size="30" wrappingWidth="26.39990234375" />
-                  <FontAwesomeIconView fill="WHITE" layoutX="215.0" layoutY="52.0" size="35" />
                </children>
             </AnchorPane>
          </top>
-         <right>
-            <TextField fx:id="noteTextField" prefHeight="26.0" prefWidth="153.0" style="-fx-background-radius: 15;" BorderPane.alignment="CENTER_LEFT">
-               <BorderPane.margin>
-                  <Insets right="25.0" top="-80.0" />
-               </BorderPane.margin>
-               <padding>
-                  <Insets bottom="160.0" left="180.0" />
-               </padding>
-            </TextField>
-         </right>
+
          <center>
-            <Button fx:id="addNoteButton" mnemonicParsing="false" style="-fx-background-color: #435898;" text="Add Note" textFill="#fafafa" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets right="-210.0" top="160.0" />
-               </BorderPane.margin>
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
+            <TableView fx:id="portTableView" prefHeight="300.0" prefWidth="500.0">
+               <columns>
+                  <TableColumn fx:id="portNameColumn" text="Port Name" prefWidth="150.0"/>
+                  <TableColumn fx:id="portCodeColumn" text="Port Code" prefWidth="150.0"/>
+                  <TableColumn fx:id="countryColumn" text="Country" prefWidth="200.0"/>
+               </columns>
+            </TableView>
          </center>
-         <left>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Memo" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="730.0" top="-300.0" />
-               </BorderPane.margin>
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
-         </left>
+
+         <bottom>
+            <HBox spacing="10.0" alignment="CENTER">
+               <padding>
+                  <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+               </padding>
+               <children>
+                  <Button text="Add Port Details" onAction="#handleAddPort" />
+               </children>
+            </HBox>
+         </bottom>
+
       </BorderPane>
-      <Button fx:id="addNoteButton2" layoutX="60.0" layoutY="501.0" mnemonicParsing="false" style="-fx-background-color: #435898;" text="Add Port Details" textFill="#fafafa" onAction="#openAddPortWindow">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <TableView layoutX="57.0" layoutY="160.0" prefHeight="320.0" prefWidth="589.0">
-         <columns>
-            <TableColumn prefWidth="213.0" text="Port Name " />
-            <TableColumn prefWidth="187.0" text="Port Code" />
-            <TableColumn minWidth="6.0" prefWidth="188.0" text="Country " />
-         </columns>
-      </TableView>
-      <Text layoutX="60.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port Details">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>
