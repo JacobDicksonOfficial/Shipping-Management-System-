@@ -33,6 +33,12 @@ public class PortBusinessLogic {
         return ports;
     }
 
+    public void clearAllPorts() {
+        ports.clear();  // Clear the in-memory list of ports
+        savePortsToFile();  // Save the empty list to the file to persist the change
+    }
+
+
     private void savePortsToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
             for (Port port : ports) {

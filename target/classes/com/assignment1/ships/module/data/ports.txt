@@ -1,13 +1,3 @@
-Port of Cork,CRK100,Ireland,River Side,89.9 MHz
-Port of Drogheda,DRA200,Ireland,Dry Land,86.2 MHz
-Port of Rotterdam,RTM100,Netherlands,River Side,91.3 MHz
-Port of Hamburg,HMB200,Germany,Sea Side,92.7 MHz
-Port of Antwerp,ANP300,Belgium,River Side,90.2 MHz
-Port of Barcelona,BCN400,Spain,Sea Side,88.5 MHz
-Port of Marseille,MRS500,France,Sea Side,87.9 MHz
-Port of Genoa,GEN600,Italy,Sea Side,89.4 MHz
-Port of Piraeus,PIR700,Greece,Sea Side,90.1 MHz
-Port of Southampton,SOT800,United Kingdom,Sea Side,93.2 MHz
 Port of Shanghai,SHG101,China,River Side,94.6 MHz
 Port of Singapore,SNG201,Singapore,Sea Side,95.8 MHz
 Port of Dubai,DBX301,UAE,Sea Side,96.3 MHz
@@ -23,5 +13,3 @@ Port of Vladivostok,VLD202,Russia,Sea Side,105.6 MHz
 Port of Helsinki,HEL302,Finland,Sea Side,106.8 MHz
 Port of Oslo,OSL402,Norway,Sea Side,107.9 MHz
 Port of Buenos Aires,BUE502,Argentina,River Side,108.1 MHz
-
-

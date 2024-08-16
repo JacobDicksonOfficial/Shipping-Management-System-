@@ -42,6 +42,7 @@
                <children>
                   <Button text="Add Port" onAction="#handleAddPort" />
                   <Button text="Delete Selected Port" onAction="#handleDeletePort" />
+                  <Button text="Clear Facility" onAction="#handleClearFacility" />
                </children>
             </HBox>
          </bottom>

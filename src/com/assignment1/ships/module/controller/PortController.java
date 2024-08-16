@@ -98,6 +98,12 @@ public class PortController {
             portBusinessLogic.deletePort(selectedPort); // Ensure the port is also removed from the business logic
         }
     }
+
+    @FXML
+    private void handleClearFacility() {
+        portList.clear();  // Clear the observable list that is displayed in the TableView
+        portBusinessLogic.clearAllPorts();  // Clear the ports in the business logic and persist the change
+    }
 }
 
 
