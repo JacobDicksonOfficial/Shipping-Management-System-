@@ -89,6 +89,15 @@ public class PortController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleDeletePort() {
+        Port selectedPort = portTableView.getSelectionModel().getSelectedItem();
+        if (selectedPort != null) {
+            portList.remove(selectedPort);
+            portBusinessLogic.deletePort(selectedPort); // Ensure the port is also removed from the business logic
+        }
+    }
 }
 
 
