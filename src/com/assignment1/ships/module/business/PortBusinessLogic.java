@@ -30,7 +30,7 @@ public class PortBusinessLogic {
     public void savePortsToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
             for (Port port : ports) {
-                writer.write(port.getPortName() + "," + port.getPortCode() + "," + port.getCountry());
+                writer.write(port.getPortName() + "," + port.getPortCode() + "," + port.getCountry() + "," + port.getPortType() + "," + port.getComs());
                 writer.newLine();  // Add a new line after each port entry
             }
         } catch (IOException e) {
@@ -45,8 +45,8 @@ public class PortBusinessLogic {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 3) {  // Ensure there are exactly 3 parts (portName, portCode, country)
-                    loadedPorts.add(new Port(parts[0], parts[1], parts[2]));
+                if (parts.length == 5) {  // Ensure there are exactly 5 parts (portName, portCode, country, portType, coms)
+                    loadedPorts.add(new Port(parts[0], parts[1], parts[2], parts[3], parts[4]));
                 }
             }
         } catch (IOException e) {
@@ -60,3 +60,4 @@ public class PortBusinessLogic {
         return ports;
     }
 }
+

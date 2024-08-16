@@ -14,6 +14,10 @@ public class AddPortController {
     private TextField portCodeField;
     @FXML
     private TextField countryField;
+    @FXML
+    private TextField portTypeField;   // New field for Port Type
+    @FXML
+    private TextField comsField;       // New field for COMS
 
     private PortBusinessLogic portBusinessLogic;
 
@@ -28,13 +32,16 @@ public class AddPortController {
         String portName = portNameField.getText();
         String portCode = portCodeField.getText();
         String country = countryField.getText();
+        String portType = portTypeField.getText();  // Retrieve Port Type input
+        String coms = comsField.getText();          // Retrieve COMS input
 
-        if (portName.isEmpty() || portCode.isEmpty() || country.isEmpty()) {
+        if (portName.isEmpty() || portCode.isEmpty() || country.isEmpty() || portType.isEmpty() || coms.isEmpty()) {
             System.out.println("Please fill in all fields.");
             return;
         }
 
-        portBusinessLogic.addPort(new Port(portName, portCode, country));
+        // Assuming Port class is updated to handle portType and coms
+        portBusinessLogic.addPort(new Port(portName, portCode, country, portType, coms));
 
         // Close the window after saving the port
         Stage stage = (Stage) portNameField.getScene().getWindow();

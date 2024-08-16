@@ -7,20 +7,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="253.0" prefWidth="240.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.AddPortController">
+<AnchorPane prefHeight="320.0" prefWidth="240.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.AddPortController">
     <children>
-        <TextField fx:id="portNameField" layoutX="44.0" layoutY="73.0" promptText="Port Name" />
-        <TextField fx:id="portCodeField" layoutX="44.0" layoutY="107.0" prefHeight="26.0" prefWidth="152.0" promptText="Port Code" />
-        <TextField fx:id="countryField" layoutX="44.0" layoutY="144.0" promptText="Country" />
-        <Button layoutX="50.0" layoutY="209.0" onAction="#handleAddPort" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #294391;" text="Save" textFill="WHITE" />
-      <ToolBar prefHeight="44.0" prefWidth="275.0" style="-fx-background-color: #294391;">
-         <items>
-            <Text fill="#eeeeee" strokeType="OUTSIDE" strokeWidth="0.0" text="Logitrack Portal">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Text>
-         </items>
-      </ToolBar>
+        <TextField fx:id="portNameField" layoutX="44.0" layoutY="50.0" promptText="Port Name" />
+        <TextField fx:id="portCodeField" layoutX="44.0" layoutY="90.0" prefHeight="26.0" prefWidth="152.0" promptText="Port Code" />
+        <TextField fx:id="countryField" layoutX="44.0" layoutY="130.0" promptText="Country" />
+        <TextField fx:id="portTypeField" layoutX="44.0" layoutY="170.0" promptText="Port Type" />   <!-- New Port Type Field -->
+        <TextField fx:id="comsField" layoutX="44.0" layoutY="210.0" promptText="COMS (e.g., 89.9)" />  <!-- New COMS Field -->
+        <Button layoutX="50.0" layoutY="260.0" onAction="#handleAddPort" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #294391;" text="Save" textFill="WHITE" />
+        <ToolBar prefHeight="44.0" prefWidth="275.0" style="-fx-background-color: #294391;">
+            <items>
+                <Text fill="#eeeeee" strokeType="OUTSIDE" strokeWidth="0.0" text="Logitrack Portal">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Text>
+            </items>
+        </ToolBar>
     </children>
 </AnchorPane>

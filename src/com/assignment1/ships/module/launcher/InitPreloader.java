@@ -38,6 +38,7 @@ public class InitPreloader implements Initializable {
             sleepThread(1000);
         });
 
+
         Thread t3 = new Thread(() -> {
             updateLoadingMessage("Opening Hub");
             sleepThread(3000); // Delay for 5 seconds
