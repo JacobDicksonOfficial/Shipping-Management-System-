@@ -3,13 +3,8 @@ Port of Singapore,SNG201,Singapore,Sea Side,95.8 MHz
 Port of Dubai,DBX301,UAE,Sea Side,96.3 MHz
 Port of Los Angeles,LAX401,USA,Sea Side,97.1 MHz
 Port of Santos,STS501,Brazil,Sea Side,98.4 MHz
-Port of Durban,DRB601,South Africa,Sea Side,99.2 MHz
-Port of Vancouver,VNC701,Canada,Sea Side,100.5 MHz
-Port of Mumbai,MBI801,India,Sea Side,101.7 MHz
-Port of Sydney,SYD901,Australia,Sea Side,102.9 MHz
-Port of Tokyo,TOK002,Japan,Sea Side,103.3 MHz
-Port of Busan,BUS102,South Korea,Sea Side,104.5 MHz
-Port of Vladivostok,VLD202,Russia,Sea Side,105.6 MHz
-Port of Helsinki,HEL302,Finland,Sea Side,106.8 MHz
-Port of Oslo,OSL402,Norway,Sea Side,107.9 MHz
-Port of Buenos Aires,BUE502,Argentina,River Side,108.1 MHz
+Port of Goa ,GOA221,India,Sea Side ,99.5 MHz
+Port of Shanghai,SHG101,China,River Side,94.6 MHz
+Port of Singapore,SNG201,Singapore,Sea Side,95.8 MHz
+Port of Dubai,DBX301,UAE,Sea Side,96.3 MHz
+Port of Los Angeles,LAX401,USA,Sea Side,97.1 MHz
