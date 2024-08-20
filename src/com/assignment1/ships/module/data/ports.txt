@@ -4,3 +4,23 @@ Port of Los Angeles,LAX401,USA,Sea Side,97.1 MHz
 Port of Santos,STS501,Brazil,Sea Side,98.4 MHz
 Port of Goa ,GOA221,India,Sea Side ,99.5 MHz
 Port of Shanghai,SHG101,China,River Side,94.6 MHz
+Port of Rotterdam,RTM601,Netherlands,Sea Side,100.1 MHz
+Port of Hamburg,HAM701,Germany,Sea Side,100.6 MHz
+Port of Antwerp,ANP801,Belgium,Sea Side,101.2 MHz
+Port of Hong Kong,HKG901,Hong Kong,Sea Side,101.7 MHz
+Port of Tokyo,TYO011,Japan,Sea Side,102.3 MHz
+Port of Barcelona,BCN121,Spain,Sea Side,102.8 MHz
+Port of Vancouver,VCR131,Canada,Sea Side,103.4 MHz
+Port of Durban,DBN141,South Africa,Sea Side,103.9 MHz
+Port of New York,NYC151,USA,Sea Side,104.5 MHz
+Port of Sydney,SYD161,Australia,Sea Side,105.0 MHz
+Port of Mumbai,MUM171,India,Sea Side,105.6 MHz
+Port of Alexandria,ALX181,Egypt,Sea Side,106.1 MHz
+Port of Istanbul,IST191,Turkey,Sea Side,106.7 MHz
+Port of Busan,BUS201,South Korea,Sea Side,107.2 MHz
+Port of Mombasa,MSA211,Kenya,Sea Side,107.8 MHz
+Port of Buenos Aires,BUE221,Argentina,Sea Side,108.3 MHz
+Port of Manila,MNL231,Philippines,Sea Side,108.9 MHz
+Port of Jakarta,JKT241,Indonesia,Sea Side,109.4 MHz
+Port of Valparaiso,VLP251,Chile,Sea Side,110.0 MHz
+Port of Colombo,CMB261,Sri Lanka,Sea Side,110.5 MHz
