@@ -19,7 +19,7 @@ public class PortBusinessLogic {
 
     public PortBusinessLogic() {
         ports = loadPortsFromFile();
-        loadShipsFromFile();  // Load ships after loading ports
+        loadShipsFromFile();  // Load ships after ports are loaded
     }
 
     public void addPort(Port port) {
@@ -30,7 +30,6 @@ public class PortBusinessLogic {
     public void deletePort(Port port) {
         ports.remove(port);
         savePortsToFile();
-        saveShipsToFile();
     }
 
     public List<Port> getAllPorts() {
@@ -40,7 +39,6 @@ public class PortBusinessLogic {
     public void clearAllPorts() {
         ports.clear();
         savePortsToFile();
-        saveShipsToFile();
     }
 
     public void savePortsToFile() {
@@ -55,12 +53,10 @@ public class PortBusinessLogic {
     }
 
     public void saveShipsToFile() {
-        System.out.println("Saving ships to ships.txt...");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(SHIPS_FILE_PATH))) {
             for (Port port : ports) {
                 for (Ship ship : port.getShips()) {
-                    System.out.println("Saving ship: " + ship.getShipName() + " for port: " + port.getPortName());
-                    writer.write(port.getPortCode() + "," + ship.getShipName() + "," + ship.getImoNumber() + "," + ship.getRegistration() + "," + ship.getUrl() + "," + ship.getCapacity());
+                    writer.write(port.getPortCode() + "," + ship.getShipName() + "," + ship.getImoNumber() + "," + ship.getRegistration() + "," + ship.getUrl() + "," + ship.getCapacity() + "," + ship.getStatus());
                     writer.newLine();
                 }
             }
@@ -69,15 +65,14 @@ public class PortBusinessLogic {
         }
     }
 
-    private List<Port> loadPortsFromFile() {
+    public List<Port> loadPortsFromFile() {
         List<Port> loadedPorts = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(PORTS_FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 5) {
-                    Port port = new Port(parts[0], parts[1], parts[2], parts[3], parts[4]);
-                    loadedPorts.add(port);
+                    loadedPorts.add(new Port(parts[0], parts[1], parts[2], parts[3], parts[4]));
                 }
             }
         } catch (IOException e) {
@@ -86,32 +81,32 @@ public class PortBusinessLogic {
         return loadedPorts;
     }
 
-    private void loadShipsFromFile() {
-        System.out.println("Loading ships from ships.txt...");
+    public void loadShipsFromFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader(SHIPS_FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 6) {
+                if (parts.length == 7) {
                     String portCode = parts[0];
-                    String shipName = parts[1];
-                    String imoNumber = parts[2];
-                    String registration = parts[3];
-                    String url = parts[4];
-                    int capacity = Integer.parseInt(parts[5]);
-
-                    // Find the port that corresponds to this ship
-                    for (Port port : ports) {
-                        if (port.getPortCode().equals(portCode)) {
-                            Ship ship = new Ship(shipName, imoNumber, registration, url, capacity);
-                            port.addShip(ship);
-                            break;
-                        }
+                    Port port = findPortByCode(portCode);
+                    if (port != null) {
+                        Ship ship = new Ship(parts[1], parts[2], parts[3], parts[4], Integer.parseInt(parts[5]));
+                        ship.setStatus(parts[6]);  // Set the status from the file
+                        port.addShip(ship);
                     }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Port findPortByCode(String portCode) {
+        for (Port port : ports) {
+            if (port.getPortCode().equals(portCode)) {
+                return port;
+            }
+        }
+        return null;
     }
 }
