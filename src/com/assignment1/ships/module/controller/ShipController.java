@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -37,6 +38,9 @@ public class ShipController {
     @FXML
     private TableColumn<Ship, Integer> capacityColumn;
 
+    @FXML
+    private TableColumn<Ship, String> statusColumn;
+
     private ObservableList<Ship> shipList;
 
     private Port port;
@@ -60,6 +64,17 @@ public class ShipController {
         registrationColumn.setCellValueFactory(new PropertyValueFactory<>("registration"));
         urlColumn.setCellValueFactory(new PropertyValueFactory<>("url"));
         capacityColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        // Set up ComboBoxTableCell for the status column
+        statusColumn.setCellFactory(ComboBoxTableCell.forTableColumn("At Port", "At Sea"));
+        statusColumn.setOnEditCommit(event -> {
+            Ship ship = event.getRowValue();
+            ship.setStatus(event.getNewValue());
+            portBusinessLogic.saveShipsToFile();  // Save the updated status to the file
+        });
+
+        shipTableView.setEditable(true);  // Enable editing for the table
     }
 
     public void loadShips() {

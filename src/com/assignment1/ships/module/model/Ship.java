@@ -7,6 +7,7 @@ public class Ship {
     private String registration;
     private String url;
     private int capacity;
+    private String status;  // New field for ship status
 
     public Ship(String shipName, String imoNumber, String registration, String url, int capacity) {
         this.shipName = shipName;
@@ -14,8 +15,10 @@ public class Ship {
         this.registration = registration;
         this.url = url;
         this.capacity = capacity;
+        this.status = "At Port";  // Default status when a ship is created
     }
 
+    // Getters and setters
     public String getShipName() {
         return shipName;
     }
@@ -34,5 +37,13 @@ public class Ship {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

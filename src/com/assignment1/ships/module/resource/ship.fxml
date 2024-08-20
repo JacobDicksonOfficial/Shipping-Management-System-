@@ -12,6 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.ShipController">
     <children>
         <BorderPane prefHeight="627.0" prefWidth="928.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -24,11 +25,11 @@
                                 <Font name="System Bold Italic" size="36.0" />
                             </font>
                         </Text>
-                  <ImageView fitHeight="72.0" fitWidth="69.0" layoutX="331.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/ss1.png" />
-                     </image>
-                  </ImageView>
+                        <ImageView fitHeight="72.0" fitWidth="69.0" layoutX="331.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/ss1.png" />
+                            </image>
+                        </ImageView>
                     </children>
                 </AnchorPane>
             </top>
@@ -41,6 +42,11 @@
                         <TableColumn fx:id="registrationColumn" prefWidth="150.0" text="Registration" />
                         <TableColumn fx:id="urlColumn" prefWidth="150.0" text="URL" />
                         <TableColumn fx:id="capacityColumn" prefWidth="150.0" text="Capacity (Tonnes)" />
+                        <TableColumn fx:id="statusColumn" prefWidth="150.0" text="Status">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="status" />
+                            </cellValueFactory>
+                        </TableColumn>
                     </columns>
                 </TableView>
             </center>
@@ -67,6 +73,6 @@
             </bottom>
 
         </BorderPane>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>
