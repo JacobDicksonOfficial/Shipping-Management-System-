@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="309.0" prefWidth="207.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.AddShipController">
+    <children>
+        <TextField fx:id="shipNameField" layoutX="29.0" layoutY="82.0" promptText="Ship Name" />
+        <TextField fx:id="imoNumberField" layoutX="29.0" layoutY="114.0" promptText="IMO Number (IMO1234567)" />
+        <TextField fx:id="registrationField" layoutX="29.0" layoutY="148.0" promptText="Registration (IE, FR, etc.)" />
+        <TextField fx:id="urlField" layoutX="29.0" layoutY="181.0" promptText="URL" />
+        <TextField fx:id="capacityField" layoutX="29.0" layoutY="212.0" promptText="Capacity" />
+        <Button layoutX="32.0" layoutY="258.0" onAction="#handleAddShip" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #535353;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Pane prefHeight="57.0" prefWidth="207.0" style="-fx-background-color: #151515;">
+         <children>
+            <Text fill="WHITE" layoutX="34.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SS Portal" wrappingWidth="105.13671875">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="39.0" fitWidth="46.0" layoutX="119.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/ss1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
