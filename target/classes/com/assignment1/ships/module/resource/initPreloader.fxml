@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="289.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.launcher.InitPreloader">
+<AnchorPane prefHeight="289.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.launcher.InitPreloader">
     <children>
-        <Label fx:id="lblLoading" contentDisplay="TOP" layoutX="15.0" layoutY="252.0" text="loading..." AnchorPane.bottomAnchor="19.399999999999977" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.400000000000091" />
+        <Label fx:id="lblLoading" contentDisplay="TOP" layoutX="15.0" layoutY="252.0" text="Opening Hub" AnchorPane.bottomAnchor="19.399999999999977" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.400000000000091" />
         <ProgressBar blendMode="DARKEN" layoutX="15.0" layoutY="156.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
         <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="14.0" text="LogiTrack" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="14.0">
             <font>

@@ -3,7 +3,6 @@ package com.assignment1.ships.module.controller;
 import com.assignment1.ships.module.business.PortBusinessLogic;
 import com.assignment1.ships.module.model.Port;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,59 +30,48 @@ public class PortController {
     private TableColumn<Port, String> countryColumn;
 
     @FXML
-    private TableColumn<Port, String> portTypeColumn;  // New column for Port Type
+    private TableColumn<Port, String> portTypeColumn;
 
     @FXML
-    private TableColumn<Port, String> comsColumn;      // New column for COMS
+    private TableColumn<Port, String> comsColumn;
 
-    private PortBusinessLogic portBusinessLogic = new PortBusinessLogic();
+    private PortBusinessLogic portBusinessLogic;
 
-    private ObservableList<Port> portList;
-
-    @FXML
-    public void initialize() {
-        // Initialize the columns.
-        portNameColumn.setCellValueFactory(new PropertyValueFactory<>("portName"));
-        portCodeColumn.setCellValueFactory(new PropertyValueFactory<>("portCode"));
-        countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
-        portTypeColumn.setCellValueFactory(new PropertyValueFactory<>("portType"));  // Bind Port Type
-        comsColumn.setCellValueFactory(new PropertyValueFactory<>("coms"));          // Bind COMS
-
-        // Load initial data
+    public void setPortBusinessLogic(PortBusinessLogic portBusinessLogic) {
+        this.portBusinessLogic = portBusinessLogic;
         loadPorts();
     }
 
-    public void loadPorts() {
-        portList = FXCollections.observableArrayList(portBusinessLogic.getAllPorts());
-        portTableView.setItems(portList);
+    @FXML
+    public void initialize() {
+        // Initialize the columns
+        portNameColumn.setCellValueFactory(new PropertyValueFactory<>("portName"));
+        portCodeColumn.setCellValueFactory(new PropertyValueFactory<>("portCode"));
+        countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
+        portTypeColumn.setCellValueFactory(new PropertyValueFactory<>("portType"));
+        comsColumn.setCellValueFactory(new PropertyValueFactory<>("coms"));
     }
 
-    public void refreshPorts() {
-        portList.clear();
-        portList.addAll(portBusinessLogic.getAllPorts());
-        portTableView.refresh();  // Optional: Call refresh to force the TableView to redraw its contents
+    public void loadPorts() {
+        portTableView.setItems(FXCollections.observableArrayList(portBusinessLogic.getAllPorts()));
     }
 
     @FXML
     private void handleAddPort() {
         try {
-            // Load the FXML for the Add Port window
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment1/ships/module/resource/add-port.fxml"));
             Parent root = loader.load();
 
-            // Get the controller associated with the Add Port window
             AddPortController addPortController = loader.getController();
             addPortController.setPortBusinessLogic(portBusinessLogic);
 
-            // Create a new stage (window) for the Add Port form
             Stage stage = new Stage();
-            stage.setTitle("Add Port Details");
-            stage.initModality(Modality.APPLICATION_MODAL); // Block interaction with other windows until this one is closed
+            stage.setTitle("Add Port");
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
-            stage.showAndWait(); // Wait until the Add Port window is closed
+            stage.showAndWait();
 
-            // Refresh the ports in the TableView after adding a new port
-            refreshPorts();
+            loadPorts();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,16 +82,40 @@ public class PortController {
     private void handleDeletePort() {
         Port selectedPort = portTableView.getSelectionModel().getSelectedItem();
         if (selectedPort != null) {
-            portList.remove(selectedPort);
-            portBusinessLogic.deletePort(selectedPort); // Ensure the port is also removed from the business logic
+            portBusinessLogic.deletePort(selectedPort);
+            loadPorts();
+        }
+    }
+
+    @FXML
+    private void handleViewShips() {
+        Port selectedPort = portTableView.getSelectionModel().getSelectedItem();
+        if (selectedPort != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment1/ships/module/resource/ship.fxml"));
+                Parent root = loader.load();
+
+                ShipController shipController = loader.getController();
+                shipController.setPort(selectedPort);  // Pass the selected port to the ShipController
+                shipController.setPortBusinessLogic(portBusinessLogic);  // Pass the PortBusinessLogic instance
+
+                Stage stage = new Stage();
+                stage.setTitle("Ships in " + selectedPort.getPortName());
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Please select a port first.");
         }
     }
 
     @FXML
     private void handleClearFacility() {
-        portList.clear();  // Clear the observable list that is displayed in the TableView
-        portBusinessLogic.clearAllPorts();  // Clear the ports in the business logic and persist the change
+        portBusinessLogic.clearAllPorts();
+        loadPorts();
     }
 }
-
-

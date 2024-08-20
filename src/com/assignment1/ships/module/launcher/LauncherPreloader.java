@@ -22,7 +22,8 @@ public class LauncherPreloader extends Preloader {
     @Override
     public void handleStateChangeNotification(StateChangeNotification info) {
         if (info.getType() == StateChangeNotification.Type.BEFORE_START) {
-            preloaderStage.hide(); // Hide the preloader stage when main application is ready
+            preloaderStage.hide(); // Hide the preloader stage when the main application is ready to start
         }
     }
 }
+

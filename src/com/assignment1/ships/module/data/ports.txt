@@ -1,10 +1,6 @@
-Port of Shanghai,SHG101,China,River Side,94.6 MHz
 Port of Singapore,SNG201,Singapore,Sea Side,95.8 MHz
 Port of Dubai,DBX301,UAE,Sea Side,96.3 MHz
 Port of Los Angeles,LAX401,USA,Sea Side,97.1 MHz
 Port of Santos,STS501,Brazil,Sea Side,98.4 MHz
 Port of Goa ,GOA221,India,Sea Side ,99.5 MHz
 Port of Shanghai,SHG101,China,River Side,94.6 MHz
-Port of Singapore,SNG201,Singapore,Sea Side,95.8 MHz
-Port of Dubai,DBX301,UAE,Sea Side,96.3 MHz
-Port of Los Angeles,LAX401,USA,Sea Side,97.1 MHz
