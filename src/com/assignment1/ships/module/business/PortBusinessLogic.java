@@ -1,5 +1,6 @@
 package com.assignment1.ships.module.business;
 
+import com.assignment1.ships.module.model.Container;
 import com.assignment1.ships.module.model.Port;
 import com.assignment1.ships.module.model.Ship;
 
@@ -17,10 +18,14 @@ public class PortBusinessLogic {
     private static final String PORTS_FILE_PATH = "src/com/assignment1/ships/module/data/ports.txt";
     private static final String SHIPS_FILE_PATH = "src/com/assignment1/ships/module/data/ships.txt";
 
+    private static final String CONTAINERS_FILE_PATH = "src/com/assignment1/ships/module/data/containers.txt";
+
     public PortBusinessLogic() {
         ports = loadPortsFromFile();
-        loadShipsFromFile();  // Load ships after ports are loaded
+        loadShipsFromFile();
+        loadContainersFromFile(); // Load containers after ships are loaded
     }
+
 
     public void addPort(Port port) {
         ports.add(port);
@@ -40,6 +45,22 @@ public class PortBusinessLogic {
         ports.clear();
         savePortsToFile();
     }
+
+    public void saveContainersToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CONTAINERS_FILE_PATH))) {
+            for (Port port : ports) {
+                for (Ship ship : port.getShips()) {
+                    for (Container container : ship.getContainers()) {
+                        writer.write(ship.getImoNumber() + "," + container.getContainerCode() + "," + container.getCubic());
+                        writer.newLine();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void savePortsToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PORTS_FILE_PATH))) {
@@ -101,6 +122,25 @@ public class PortBusinessLogic {
         }
     }
 
+    public void loadContainersFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(CONTAINERS_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    String imoNumber = parts[0];
+                    Ship ship = findShipByImo(imoNumber);
+                    if (ship != null) {
+                        Container container = new Container(parts[1], Double.parseDouble(parts[2]));
+                        ship.addContainer(container);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private Port findPortByCode(String portCode) {
         for (Port port : ports) {
             if (port.getPortCode().equals(portCode)) {
@@ -109,4 +149,18 @@ public class PortBusinessLogic {
         }
         return null;
     }
+
+    private Ship findShipByImo(String imoNumber) {
+        for (Port port : ports) {
+            for (Ship ship : port.getShips()) {
+                if (ship.getImoNumber().equals(imoNumber)) {
+                    return ship;
+                }
+            }
+        }
+        return null;
+    }
+
+
+
 }

@@ -121,8 +121,10 @@ public class ShipController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment1/ships/module/resource/container.fxml"));
                 Parent root = loader.load();
 
+                // Get the controller and set the ship and PortBusinessLogic instances
                 ContainerController containerController = loader.getController();
                 containerController.setShip(selectedShip);
+                containerController.setPortBusinessLogic(portBusinessLogic);  // Pass the PortBusinessLogic instance
 
                 Stage stage = new Stage();
                 stage.setTitle("Containers in " + selectedShip.getShipName());
@@ -137,5 +139,6 @@ public class ShipController {
             System.out.println("Please select a ship first.");
         }
     }
+
 }
 

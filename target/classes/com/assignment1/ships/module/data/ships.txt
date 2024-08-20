@@ -1,1 +1,1 @@
-SNG201,Titanic,IMO1234567,IE,google.com,100,At Sea
+SNG201,Titanic,IMO1234567,IE,google.com,100,At Port

@@ -1,5 +1,6 @@
 package com.assignment1.ships.module.controller;
 
+import com.assignment1.ships.module.business.PortBusinessLogic;
 import com.assignment1.ships.module.model.Container;
 import com.assignment1.ships.module.model.Ship;
 import javafx.collections.FXCollections;
@@ -28,11 +29,16 @@ public class ContainerController {
     private TableColumn<Container, Double> cubicColumn;
 
     private Ship ship;
+    private PortBusinessLogic portBusinessLogic;
     private ObservableList<Container> containerList;
 
     public void setShip(Ship ship) {
         this.ship = ship;
         loadContainers();
+    }
+
+    public void setPortBusinessLogic(PortBusinessLogic portBusinessLogic) {
+        this.portBusinessLogic = portBusinessLogic;
     }
 
     @FXML
@@ -63,6 +69,9 @@ public class ContainerController {
 
             loadContainers();
 
+            // Save containers to file after adding
+            portBusinessLogic.saveContainersToFile();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,7 +83,12 @@ public class ContainerController {
         if (selectedContainer != null) {
             containerList.remove(selectedContainer);
             ship.removeContainer(selectedContainer);
+
+            // Save containers to file after deleting
+            portBusinessLogic.saveContainersToFile();
         }
     }
 }
+
+
 
