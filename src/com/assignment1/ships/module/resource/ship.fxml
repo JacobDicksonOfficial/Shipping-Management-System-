@@ -60,19 +60,28 @@
                             </HBox.margin>
                             <font>
                                 <Font name="System Bold" size="12.0" />
-                            </font></Button>
+                            </font>
+                        </Button>
                         <Button onAction="#handleDeleteShip" style="-fx-background-color: #535353;" text="Delete Ship" textFill="WHITE">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button onAction="#handleViewContainers" style="-fx-background-color: #535353;" text="View Containers" textFill="WHITE">
                             <HBox.margin>
                                 <Insets right="700.0" />
                             </HBox.margin>
                             <font>
                                 <Font name="System Bold" size="12.0" />
-                            </font></Button>
+                            </font>
+                        </Button>
                     </children>
                 </HBox>
             </bottom>
 
         </BorderPane>
-        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

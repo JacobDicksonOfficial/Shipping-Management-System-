@@ -58,7 +58,6 @@ public class ShipController {
 
     @FXML
     public void initialize() {
-        // Initialize the columns
         shipNameColumn.setCellValueFactory(new PropertyValueFactory<>("shipName"));
         imoNumberColumn.setCellValueFactory(new PropertyValueFactory<>("imoNumber"));
         registrationColumn.setCellValueFactory(new PropertyValueFactory<>("registration"));
@@ -66,15 +65,14 @@ public class ShipController {
         capacityColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        // Set up ComboBoxTableCell for the status column
         statusColumn.setCellFactory(ComboBoxTableCell.forTableColumn("At Port", "At Sea"));
         statusColumn.setOnEditCommit(event -> {
             Ship ship = event.getRowValue();
             ship.setStatus(event.getNewValue());
-            portBusinessLogic.saveShipsToFile();  // Save the updated status to the file
+            portBusinessLogic.saveShipsToFile();
         });
 
-        shipTableView.setEditable(true);  // Enable editing for the table
+        shipTableView.setEditable(true);
     }
 
     public void loadShips() {
@@ -98,8 +96,6 @@ public class ShipController {
             stage.showAndWait();
 
             loadShips();
-
-            // Save ships to file after adding a ship
             portBusinessLogic.saveShipsToFile();
 
         } catch (IOException e) {
@@ -113,7 +109,32 @@ public class ShipController {
         if (selectedShip != null) {
             shipList.remove(selectedShip);
             port.removeShip(selectedShip);
-            portBusinessLogic.saveShipsToFile();  // Save ships to file after deleting a ship
+            portBusinessLogic.saveShipsToFile();
+        }
+    }
+
+    @FXML
+    private void handleViewContainers() {
+        Ship selectedShip = shipTableView.getSelectionModel().getSelectedItem();
+        if (selectedShip != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment1/ships/module/resource/container.fxml"));
+                Parent root = loader.load();
+
+                ContainerController containerController = loader.getController();
+                containerController.setShip(selectedShip);
+
+                Stage stage = new Stage();
+                stage.setTitle("Containers in " + selectedShip.getShipName());
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Please select a ship first.");
         }
     }
 }
