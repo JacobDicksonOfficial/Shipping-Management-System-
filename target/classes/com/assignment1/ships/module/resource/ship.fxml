@@ -13,12 +13,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.ShipController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.ShipController">
     <children>
         <BorderPane prefHeight="627.0" prefWidth="928.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <top>
-                <AnchorPane prefHeight="84.0" prefWidth="928.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER">
+                <AnchorPane prefHeight="84.0" prefWidth="928.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
                     <children>
                         <Text fill="#f7f7f7" layoutX="40.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S.S. Monitor Hub" wrappingWidth="301.3367004394531">
                             <font>

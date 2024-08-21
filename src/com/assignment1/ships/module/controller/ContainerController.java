@@ -30,7 +30,7 @@ public class ContainerController {
     private TableColumn<Container, Double> cubicColumn;
 
     @FXML
-    private TableColumn<Container, String> statusColumn;  // New column for container status
+    private TableColumn<Container, String> statusColumn;
 
     private Ship ship;
     private PortBusinessLogic portBusinessLogic;
@@ -51,15 +51,14 @@ public class ContainerController {
         cubicColumn.setCellValueFactory(new PropertyValueFactory<>("cubic"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        // Set up ComboBoxTableCell for the status column
         statusColumn.setCellFactory(ComboBoxTableCell.forTableColumn("Loaded On Ship", "Unloaded At Port"));
         statusColumn.setOnEditCommit(event -> {
             Container container = event.getRowValue();
             container.setStatus(event.getNewValue());
-            portBusinessLogic.saveContainersToFile();  // Save the updated status to the file
+            portBusinessLogic.saveContainersToFile();
         });
 
-        containerTableView.setEditable(true);  // Enable editing for the table
+        containerTableView.setEditable(true);
     }
 
     public void loadContainers() {
@@ -83,8 +82,6 @@ public class ContainerController {
             stage.showAndWait();
 
             loadContainers();
-
-            // Save containers to file after adding
             portBusinessLogic.saveContainersToFile();
 
         } catch (IOException e) {
@@ -99,10 +96,36 @@ public class ContainerController {
             containerList.remove(selectedContainer);
             ship.removeContainer(selectedContainer);
 
-            // Save containers to file after deleting
             portBusinessLogic.saveContainersToFile();
         }
     }
+
+    @FXML
+    private void handleViewPallets() {
+        Container selectedContainer = containerTableView.getSelectionModel().getSelectedItem();
+        if (selectedContainer != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment1/ships/module/resource/pallet.fxml"));
+                Parent root = loader.load();
+
+                PalletController palletController = loader.getController();
+                palletController.setContainer(selectedContainer);
+                palletController.setPortBusinessLogic(portBusinessLogic);
+
+                Stage stage = new Stage();
+                stage.setTitle("Pallets in " + selectedContainer.getContainerCode());
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Please select a container first.");
+        }
+    }
 }
+
 
 

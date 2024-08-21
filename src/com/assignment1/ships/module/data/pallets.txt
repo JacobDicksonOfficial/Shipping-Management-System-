@@ -1,0 +1,10 @@
+XENU1276245,Samsung,Electronic,350.0,350.0
+XENU1276245,Sony,Electronic,375.0,375.0
+XENU1276245,LG Electronics,Electronic,325.0,325.0
+XENU1276245,Panasonic,Electronic,310.0,310.0
+XENU1276245,Toshiba,Electronic,340.0,340.0
+XENU1276245,Lenovo,Electronic,360.0,360.0
+XENU1276245,Asus,Electronic,355.0,355.0
+XENU1276245,Dell,Electronic,365.0,365.0
+XENU1276245,HP Inc.,Electronic,320.0,320.0
+XENU1276245,Acer,Electronic,330.0,330.0

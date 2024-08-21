@@ -12,12 +12,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.ContainerController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.ContainerController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <top>
-                <AnchorPane prefHeight="74.0" prefWidth="600.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER">
+                <AnchorPane prefHeight="74.0" prefWidth="600.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
                     <children>
                         <Text fill="#f7f7f7" layoutX="46.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LogiHub" wrappingWidth="160.0">
                             <font>
@@ -35,11 +35,11 @@
             </top>
 
             <center>
-                <TableView fx:id="containerTableView" prefHeight="266.0" prefWidth="614.0">
+                <TableView fx:id="containerTableView" prefHeight="266.0" prefWidth="500.0">
                     <columns>
-                        <TableColumn fx:id="containerCodeColumn" prefWidth="200.0" text="Container Code" />
-                        <TableColumn fx:id="cubicColumn" prefWidth="200.0" text="Cubic Metres" />
-                        <TableColumn fx:id="statusColumn" prefWidth="200.0" text="Status" /> <!-- New status column -->
+                        <TableColumn fx:id="containerCodeColumn" prefWidth="166.0" text="Container Code" />
+                        <TableColumn fx:id="cubicColumn" prefWidth="166.0" text="Cubic Metres" />
+                        <TableColumn fx:id="statusColumn" prefWidth="166.0" text="Status" />
                     </columns>
                 </TableView>
             </center>
@@ -47,7 +47,7 @@
             <bottom>
                 <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
                     <children>
-                        <Button onAction="#handleAddContainer" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #535353;" text="Add Container" textFill="WHITE">
+                        <Button onAction="#handleAddContainer" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #535353;" text="Add Container" textFill="WHITE">
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>
@@ -55,9 +55,17 @@
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button onAction="#handleDeleteContainer" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #535353;" text="Delete Container" textFill="WHITE">
+                        <Button onAction="#handleDeleteContainer" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #535353;" text="Delete Container" textFill="WHITE">
                             <HBox.margin>
-                                <Insets right="330.0" />
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button onAction="#handleViewPallets" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #535353;" text="View Pallets" textFill="WHITE">
+                            <HBox.margin>
+                                <Insets right="10.0" />
                             </HBox.margin>
                             <font>
                                 <Font name="System Bold" size="12.0" />

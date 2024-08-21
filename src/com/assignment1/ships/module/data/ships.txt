@@ -1,1 +1,10 @@
-SNG201,Titanic,IMO1234567,IE,google.com,100,At Sea
+SNG201,Maersk San Clemente,IMO1234567,IE,google.com,100,At Sea1
+SNG201,Singapore,IMO1234568,IE,google.com,101,At Sea2
+SNG201,Maersk Xiamen,IMO1234569,IE,google.com,102,At Sea
+SNG201,Maersk Qinzhou,IMO1234570,IE,google.com,103,At Sea
+SNG201,Maersk Dhaka,IMO1234571,IE,google.com,104,At Sea
+SNG201,Maersk Davao,IMO1234572,IE,google.com,105,At Sea
+SNG201,Maersk Jakarta,IMO1234573,IE,google.com,106,At Sea
+SNG201,MSC Clarita III,IMO1234574,IE,google.com,107,At Sea
+SNG201,Al Reem-I,IMO1234575,IE,google.com,108,At Sea
+SNG201,Emma A,IMO1234576,IE,google.com,109,At Sea

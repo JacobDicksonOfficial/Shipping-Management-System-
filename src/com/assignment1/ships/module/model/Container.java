@@ -1,23 +1,35 @@
 package com.assignment1.ships.module.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Container {
 
     private String containerCode;
     private double cubic;
-    private String status;  // New field for status
+    private String status;
+    private List<Pallet> pallets;
 
     public Container(String containerCode, double cubic) {
         this.containerCode = containerCode;
         this.cubic = cubic;
-        this.status = "Unloaded At Port";  // Default status when a container is created
+        this.pallets = new ArrayList<>();
     }
 
     public String getContainerCode() {
         return containerCode;
     }
 
+    public void setContainerCode(String containerCode) {
+        this.containerCode = containerCode;
+    }
+
     public double getCubic() {
         return cubic;
+    }
+
+    public void setCubic(double cubic) {
+        this.cubic = cubic;
     }
 
     public String getStatus() {
@@ -28,12 +40,16 @@ public class Container {
         this.status = status;
     }
 
-    public void setContainerCode(String containerCode) {
-        this.containerCode = containerCode;
+    public List<Pallet> getPallets() {
+        return pallets;
     }
 
-    public void setCubic(double cubic) {
-        this.cubic = cubic;
+    public void addPallet(Pallet pallet) {
+        pallets.add(pallet);
+    }
+
+    public void removePallet(Pallet pallet) {
+        pallets.remove(pallet);
     }
 }
 

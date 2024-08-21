@@ -1,6 +1,7 @@
 package com.assignment1.ships.module.business;
 
 import com.assignment1.ships.module.model.Container;
+import com.assignment1.ships.module.model.Pallet;
 import com.assignment1.ships.module.model.Port;
 import com.assignment1.ships.module.model.Ship;
 
@@ -17,15 +18,15 @@ public class PortBusinessLogic {
     private List<Port> ports;
     private static final String PORTS_FILE_PATH = "src/com/assignment1/ships/module/data/ports.txt";
     private static final String SHIPS_FILE_PATH = "src/com/assignment1/ships/module/data/ships.txt";
-
     private static final String CONTAINERS_FILE_PATH = "src/com/assignment1/ships/module/data/containers.txt";
+    private static final String PALLETS_FILE_PATH = "src/com/assignment1/ships/module/data/pallets.txt";
 
     public PortBusinessLogic() {
         ports = loadPortsFromFile();
         loadShipsFromFile();
-        loadContainersFromFile(); // Load containers after ships are loaded
+        loadContainersFromFile();
+        loadPalletsFromFile(); // Load pallets after containers are loaded
     }
-
 
     public void addPort(Port port) {
         ports.add(port);
@@ -61,7 +62,6 @@ public class PortBusinessLogic {
         }
     }
 
-
     public void savePortsToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PORTS_FILE_PATH))) {
             for (Port port : ports) {
@@ -79,6 +79,23 @@ public class PortBusinessLogic {
                 for (Ship ship : port.getShips()) {
                     writer.write(port.getPortCode() + "," + ship.getShipName() + "," + ship.getImoNumber() + "," + ship.getRegistration() + "," + ship.getUrl() + "," + ship.getCapacity() + "," + ship.getStatus());
                     writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void savePalletsToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PALLETS_FILE_PATH))) {
+            for (Port port : ports) {
+                for (Ship ship : port.getShips()) {
+                    for (Container container : ship.getContainers()) {
+                        for (Pallet pallet : container.getPallets()) {
+                            writer.write(container.getContainerCode() + "," + pallet.getCompany() + "," + pallet.getTypeOfGood() + "," + pallet.getWeight() + "," + pallet.getSize());
+                            writer.newLine();
+                        }
+                    }
                 }
             }
         } catch (IOException e) {
@@ -142,6 +159,25 @@ public class PortBusinessLogic {
         }
     }
 
+    public void loadPalletsFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(PALLETS_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 5) { // Company, Type of Good, Weight, Size
+                    String containerCode = parts[0];
+                    Container container = findContainerByCode(containerCode);
+                    if (container != null) {
+                        Pallet pallet = new Pallet(parts[1], parts[2], Double.parseDouble(parts[3]), Double.parseDouble(parts[4]));
+                        container.addPallet(pallet);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private Port findPortByCode(String portCode) {
         for (Port port : ports) {
             if (port.getPortCode().equals(portCode)) {
@@ -162,6 +198,16 @@ public class PortBusinessLogic {
         return null;
     }
 
-
-
+    private Container findContainerByCode(String containerCode) {
+        for (Port port : ports) {
+            for (Ship ship : port.getShips()) {
+                for (Container container : ship.getContainers()) {
+                    if (container.getContainerCode().equals(containerCode)) {
+                        return container;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }
