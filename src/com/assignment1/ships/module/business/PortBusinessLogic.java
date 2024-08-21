@@ -51,7 +51,7 @@ public class PortBusinessLogic {
             for (Port port : ports) {
                 for (Ship ship : port.getShips()) {
                     for (Container container : ship.getContainers()) {
-                        writer.write(ship.getImoNumber() + "," + container.getContainerCode() + "," + container.getCubic());
+                        writer.write(ship.getImoNumber() + "," + container.getContainerCode() + "," + container.getCubic() + "," + container.getStatus());
                         writer.newLine();
                     }
                 }
@@ -127,11 +127,12 @@ public class PortBusinessLogic {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 3) {
+                if (parts.length == 4) {  // Updated to handle status field
                     String imoNumber = parts[0];
                     Ship ship = findShipByImo(imoNumber);
                     if (ship != null) {
                         Container container = new Container(parts[1], Double.parseDouble(parts[2]));
+                        container.setStatus(parts[3]);  // Set the status from the file
                         ship.addContainer(container);
                     }
                 }

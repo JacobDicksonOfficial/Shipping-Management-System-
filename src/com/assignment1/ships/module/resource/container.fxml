@@ -24,12 +24,12 @@
                                 <Font name="System Bold Italic" size="36.0" />
                             </font>
                         </Text>
-                  <ImageView fitHeight="68.0" fitWidth="62.0" layoutX="192.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/gps.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="54.0" fitWidth="200.0" layoutX="22.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="68.0" fitWidth="62.0" layoutX="192.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/gps.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="54.0" fitWidth="200.0" layoutX="22.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </AnchorPane>
             </top>
@@ -37,8 +37,9 @@
             <center>
                 <TableView fx:id="containerTableView" prefHeight="266.0" prefWidth="614.0">
                     <columns>
-                        <TableColumn fx:id="containerCodeColumn" prefWidth="250.0" text="Container Code" />
-                        <TableColumn fx:id="cubicColumn" prefWidth="250.0" text="Cubic Metres" />
+                        <TableColumn fx:id="containerCodeColumn" prefWidth="200.0" text="Container Code" />
+                        <TableColumn fx:id="cubicColumn" prefWidth="200.0" text="Cubic Metres" />
+                        <TableColumn fx:id="statusColumn" prefWidth="200.0" text="Status" /> <!-- New status column -->
                     </columns>
                 </TableView>
             </center>

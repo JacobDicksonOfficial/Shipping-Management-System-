@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -27,6 +28,9 @@ public class ContainerController {
 
     @FXML
     private TableColumn<Container, Double> cubicColumn;
+
+    @FXML
+    private TableColumn<Container, String> statusColumn;  // New column for container status
 
     private Ship ship;
     private PortBusinessLogic portBusinessLogic;
@@ -45,6 +49,17 @@ public class ContainerController {
     public void initialize() {
         containerCodeColumn.setCellValueFactory(new PropertyValueFactory<>("containerCode"));
         cubicColumn.setCellValueFactory(new PropertyValueFactory<>("cubic"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        // Set up ComboBoxTableCell for the status column
+        statusColumn.setCellFactory(ComboBoxTableCell.forTableColumn("Loaded On Ship", "Unloaded At Port"));
+        statusColumn.setOnEditCommit(event -> {
+            Container container = event.getRowValue();
+            container.setStatus(event.getNewValue());
+            portBusinessLogic.saveContainersToFile();  // Save the updated status to the file
+        });
+
+        containerTableView.setEditable(true);  // Enable editing for the table
     }
 
     public void loadContainers() {
@@ -89,6 +104,5 @@ public class ContainerController {
         }
     }
 }
-
 
 
