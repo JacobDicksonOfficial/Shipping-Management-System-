@@ -1,10 +1,10 @@
-SNG201,Maersk San Clemente,IMO1234567,IE,google.com,100,At Sea1
-SNG201,Singapore,IMO1234568,IE,google.com,101,At Sea2
-SNG201,Maersk Xiamen,IMO1234569,IE,google.com,102,At Sea
-SNG201,Maersk Qinzhou,IMO1234570,IE,google.com,103,At Sea
-SNG201,Maersk Dhaka,IMO1234571,IE,google.com,104,At Sea
-SNG201,Maersk Davao,IMO1234572,IE,google.com,105,At Sea
-SNG201,Maersk Jakarta,IMO1234573,IE,google.com,106,At Sea
-SNG201,MSC Clarita III,IMO1234574,IE,google.com,107,At Sea
-SNG201,Al Reem-I,IMO1234575,IE,google.com,108,At Sea
-SNG201,Emma A,IMO1234576,IE,google.com,109,At Sea
+CNSHA,Saint Maria,IMO1234567,CN,www.google.com,240000,At Port
+CNSHA,Ocean Voyager,IMO2345678,CN,www.freightos.com,240000,At Port
+CNSHA,Sea Explorer,IMO3456789,CN,www.freightos.com,240000,At Port
+CNSHA,Maritime Queen,IMO4567890,CN,www.freightos.com,240000,At Port
+CNSHA,Pacific Trader,IMO5678901,CN,www.freightos.com,240000,At Port
+CNSHA,Atlantic Navigator,IMO6789012,CN,www.freightos.com,240000,At Port
+CNSHA,Global Carrier,IMO7890123,CN,www.freightos.com,240000,At Port
+CNSHA,Horizon Mariner,IMO8901234,CN,www.freightos.com,240000,At Port
+CNSHA,Neptune Voyager,IMO9012345,CN,www.freightos.com,240000,At Port
+CNSHA,Titan Freighter,IMO0123456,CN,www.freightos.com,240000,At Port
