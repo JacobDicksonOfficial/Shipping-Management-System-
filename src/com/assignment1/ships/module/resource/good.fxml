@@ -12,34 +12,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.PalletController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment1.ships.module.controller.GoodController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <top>
                 <AnchorPane prefHeight="74.0" prefWidth="600.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
-                    <children>
-                        <Text fill="#c32020" layoutX="39.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PTI Portal" wrappingWidth="341.0">
-                            <font>
-                                <Font name="System Bold" size="32.0" />
-                            </font>
-                        </Text>
-                  <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="203.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <children>
+                  <Text fill="#c32020" layoutX="43.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GTI Portal">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="202.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/pallet2.png" />
                      </image>
                   </ImageView>
-                    </children>
+               </children>
                 </AnchorPane>
             </top>
 
             <center>
-                <TableView fx:id="palletTableView" prefHeight="266.0" prefWidth="614.0">
+                <TableView fx:id="goodTableView" prefHeight="266.0" prefWidth="614.0">
                     <columns>
-                        <TableColumn fx:id="companyColumn" prefWidth="150.0" text="Company" />
-                        <TableColumn fx:id="typeOfGoodColumn" prefWidth="150.0" text="Type of Good" />
-                        <TableColumn fx:id="weightColumn" prefWidth="150.0" text="Weight (KG)" />
-                        <TableColumn fx:id="sizeColumn" prefWidth="150.0" text="Size (Cubic Feet)" />
+                        <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Name of Product" />
+                        <TableColumn fx:id="priceColumn" prefWidth="200.0" text="Price (€)" />
+                        <TableColumn fx:id="weightColumn" prefWidth="200.0" text="Weight (KG)" />
                     </columns>
                 </TableView>
             </center>
@@ -47,7 +46,7 @@
             <bottom>
                 <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
                     <children>
-                        <Button onAction="#handleAddPallet" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #535353;" text="Add Pallet" textFill="WHITE">
+                        <Button onAction="#handleAddGood" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #535353;" text="Add Good" textFill="WHITE">
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>
@@ -55,15 +54,7 @@
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button onAction="#handleDeletePallet" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #535353;" text="Delete Pallet" textFill="WHITE">
-                            <HBox.margin>
-                                <Insets right="200.0" />
-                            </HBox.margin>
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
-                        </Button>
-                        <Button onAction="#handleViewGoods" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #535353;" text="View Goods" textFill="WHITE">
+                        <Button onAction="#handleRemoveGood" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #535353;" text="Remove Good" textFill="WHITE">
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>

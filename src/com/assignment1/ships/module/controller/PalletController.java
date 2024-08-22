@@ -94,5 +94,30 @@ public class PalletController {
             portBusinessLogic.savePalletsToFile();
         }
     }
-}
 
+    @FXML
+    private void handleViewGoods() {
+        Pallet selectedPallet = palletTableView.getSelectionModel().getSelectedItem();
+        if (selectedPallet != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment1/ships/module/resource/good.fxml"));
+                Parent root = loader.load();
+
+                GoodController goodController = loader.getController();
+                goodController.setPallet(selectedPallet);
+                goodController.setPortBusinessLogic(portBusinessLogic);
+
+                Stage stage = new Stage();
+                stage.setTitle("Goods in " + selectedPallet.getTypeOfGood());
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Please select a pallet first.");
+        }
+    }
+}

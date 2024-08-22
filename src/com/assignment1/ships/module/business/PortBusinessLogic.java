@@ -1,6 +1,7 @@
 package com.assignment1.ships.module.business;
 
 import com.assignment1.ships.module.model.Container;
+import com.assignment1.ships.module.model.Good;
 import com.assignment1.ships.module.model.Pallet;
 import com.assignment1.ships.module.model.Port;
 import com.assignment1.ships.module.model.Ship;
@@ -20,12 +21,14 @@ public class PortBusinessLogic {
     private static final String SHIPS_FILE_PATH = "src/com/assignment1/ships/module/data/ships.txt";
     private static final String CONTAINERS_FILE_PATH = "src/com/assignment1/ships/module/data/containers.txt";
     private static final String PALLETS_FILE_PATH = "src/com/assignment1/ships/module/data/pallets.txt";
+    private static final String GOODS_FILE_PATH = "src/com/assignment1/ships/module/data/goods.txt";  // New file for goods
 
     public PortBusinessLogic() {
         ports = loadPortsFromFile();
         loadShipsFromFile();
         loadContainersFromFile();
-        loadPalletsFromFile(); // Load pallets after containers are loaded
+        loadPalletsFromFile();
+        loadGoodsFromFile(); // Load goods after pallets are loaded
     }
 
     public void addPort(Port port) {
@@ -96,6 +99,46 @@ public class PortBusinessLogic {
                             writer.newLine();
                         }
                     }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // New methods to save and load goods
+    public void saveGoodsToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(GOODS_FILE_PATH))) {
+            for (Port port : ports) {
+                for (Ship ship : port.getShips()) {
+                    for (Container container : ship.getContainers()) {
+                        for (Pallet pallet : container.getPallets()) {
+                            for (Good good : pallet.getGoods()) {
+                                writer.write(container.getContainerCode() + "," + good.toFileString());
+                                writer.newLine();
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void loadGoodsFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(GOODS_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",", 2);  // Split into container code and the rest
+                String containerCode = parts[0];
+                String goodData = parts[1];
+
+                Container container = findContainerByCode(containerCode);
+                if (container != null) {
+                    Pallet pallet = container.getPallets().get(0); // Assuming one pallet per container for simplicity
+                    pallet.addGood(Good.fromFileString(goodData));
                 }
             }
         } catch (IOException e) {
