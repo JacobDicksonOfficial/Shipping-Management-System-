@@ -1,7 +1,14 @@
 # Shipping Management System
 
-The **Shipping Management System** is a Java-based application that manages ports, ships, containers, pallets, and goods.  
-This system allows users to add, view, and manage various shipping-related entities through a graphical user interface (GUI) built with JavaFX.
+The **Shipping Management System** #
+is a Java-based application that manages ports, ships, containers, pallets, and goods.
+
+This system allows users to add, view, and manage various shipping-related entities 
+through a graphical user interface (GUI) built with JavaFX.
+
+<img src="src/com/assignment1/ships/module/resource/images/logitrack.png" alt="Logitrack" width="800"/>
+
+
 
 ## Features
 
@@ -84,9 +91,6 @@ This system allows users to add, view, and manage various shipping-related entit
 - Within a selected pallet, use the **"Add Good"** button to add goods.
 - View and delete goods associated with pallets.
 
-## Screenshots
-
-*Include relevant screenshots of the application UI here.*
 
 ## License
 
