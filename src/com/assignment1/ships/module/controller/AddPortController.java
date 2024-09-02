@@ -9,48 +9,59 @@ import javafx.stage.Stage;
 public class AddPortController {
 
     @FXML
-    private TextField portNameField;
-    @FXML
-    private TextField portCodeField;
-    @FXML
-    private TextField countryField;
-    @FXML
-    private TextField portTypeField;   // New field for Port Type
-    @FXML
-    private TextField comsField;       // New field for COMS
+    private TextField portNameField;  // TextField for entering the port name
 
-    private PortBusinessLogic portBusinessLogic;
+    @FXML
+    private TextField portCodeField;  // TextField for entering the port code
 
-    // Method to set the PortBusinessLogic instance
+    @FXML
+    private TextField countryField;  // TextField for entering the country where the port is located
+
+    @FXML
+    private TextField portTypeField;  // TextField for entering the type of the port
+
+    @FXML
+    private TextField comsField;  // TextField for entering the COMS (communications) information for the port
+
+    private PortBusinessLogic portBusinessLogic;  // Instance of PortBusinessLogic to manage port operations
+
+    /**
+     * Sets the PortBusinessLogic instance used to manage port operations.
+     *
+     * @param portBusinessLogic The PortBusinessLogic instance.
+     */
     public void setPortBusinessLogic(PortBusinessLogic portBusinessLogic) {
         this.portBusinessLogic = portBusinessLogic;
     }
 
-    // Handler for the "Save" button
+    /**
+     * Handles the event of adding a port. Validates the input, creates a new
+     * Port object, and adds it using the PortBusinessLogic instance.
+     */
     @FXML
     private void handleAddPort() {
-        String portName = portNameField.getText();
-        String portCode = portCodeField.getText();
-        String country = countryField.getText();
-        String portType = portTypeField.getText();  // Retrieve Port Type input
-        String coms = comsField.getText();          // Retrieve COMS input
+        String portName = portNameField.getText();  // Retrieve the port name input
+        String portCode = portCodeField.getText();  // Retrieve the port code input
+        String country = countryField.getText();  // Retrieve the country input
+        String portType = portTypeField.getText();  // Retrieve the port type input
+        String coms = comsField.getText();  // Retrieve the COMS input
 
+        // Validate input: check if any field is empty
         if (portName.isEmpty() || portCode.isEmpty() || country.isEmpty() || portType.isEmpty() || coms.isEmpty()) {
             System.out.println("Please fill in all fields.");
             return;
         }
 
-        // Assuming Port class is updated to handle portType and coms
+        // Create a new Port object and add it using PortBusinessLogic
         portBusinessLogic.addPort(new Port(portName, portCode, country, portType, coms));
 
         // Close the window after saving the port
         Stage stage = (Stage) portNameField.getScene().getWindow();
         stage.close();
     }
-
-
-
 }
+
+
 
 
 

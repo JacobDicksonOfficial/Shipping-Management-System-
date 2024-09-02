@@ -12,14 +12,28 @@ import javafx.stage.Stage;
 
 public class Launcher extends Application {
 
-    private PortBusinessLogic portBusinessLogic;
+    private PortBusinessLogic portBusinessLogic;  // Business logic for managing ports
 
+    /**
+     * Initializes the application. This method is called before the start method.
+     * It is used to initialize the PortBusinessLogic and load existing data.
+     *
+     * @throws Exception if an error occurs during initialization.
+     */
     @Override
     public void init() throws Exception {
         // Initialize the PortBusinessLogic to load existing data
         portBusinessLogic = new PortBusinessLogic();
     }
 
+    /**
+     * Starts the JavaFX application. This method sets up the initial stage and
+     * scene, shows the preloader, and starts background tasks for initializing
+     * the application.
+     *
+     * @param primaryStage The primary stage for this application.
+     * @throws Exception if an error occurs during startup.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Show the preloader
@@ -34,7 +48,7 @@ public class Launcher extends Application {
             @Override
             protected Void call() throws Exception {
                 // Simulate long initialization
-                Thread.sleep(3000);
+                Thread.sleep(3000);  // Simulate a delay (e.g., loading resources)
                 return null;
             }
 
@@ -46,7 +60,7 @@ public class Launcher extends Application {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment1/ships/module/resource/port.fxml"));
                         Parent root = loader.load();
                         PortController portController = loader.getController();
-                        portController.setPortBusinessLogic(portBusinessLogic);
+                        portController.setPortBusinessLogic(portBusinessLogic);  // Pass the business logic to the controller
 
                         primaryStage.setScene(new Scene(root));
                         primaryStage.setTitle("Shipping Management System");
@@ -65,6 +79,12 @@ public class Launcher extends Application {
         new Thread(task).start();
     }
 
+    /**
+     * Stops the application. This method is called when the application is about
+     * to exit. It is used to save the ports and ships before the application exits.
+     *
+     * @throws Exception if an error occurs during shutdown.
+     */
     @Override
     public void stop() throws Exception {
         // Save the ports and ships before the application exits
@@ -73,12 +93,13 @@ public class Launcher extends Application {
         super.stop();
     }
 
+    /**
+     * The main entry point for the application. This method launches the JavaFX
+     * application.
+     *
+     * @param args The command line arguments.
+     */
     public static void main(String[] args) {
         launch(args);
     }
 }
-
-
-
-
-

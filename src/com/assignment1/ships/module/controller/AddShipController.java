@@ -9,35 +9,44 @@ import javafx.stage.Stage;
 public class AddShipController {
 
     @FXML
-    private TextField shipNameField;
+    private TextField shipNameField;  // TextField for entering the ship name
 
     @FXML
-    private TextField imoNumberField;
+    private TextField imoNumberField;  // TextField for entering the IMO number of the ship
 
     @FXML
-    private TextField registrationField;
+    private TextField registrationField;  // TextField for entering the registration code of the ship
 
     @FXML
-    private TextField urlField;
+    private TextField urlField;  // TextField for entering the URL related to the ship
 
     @FXML
-    private TextField capacityField;
+    private TextField capacityField;  // TextField for entering the capacity of the ship
 
-    private Port port;
+    private Port port;  // The port to which the ship will be added
 
+    /**
+     * Sets the port to which the ship will be added.
+     *
+     * @param port The port object where the new ship will be added.
+     */
     public void setPort(Port port) {
         this.port = port;
     }
 
+    /**
+     * Handles the event of adding a ship. Validates the input, creates a new
+     * Ship object, and adds it to the specified port.
+     */
     @FXML
     private void handleAddShip() {
-        String shipName = shipNameField.getText();
-        String imoNumber = imoNumberField.getText();
-        String registration = registrationField.getText();
-        String url = urlField.getText();
+        String shipName = shipNameField.getText();  // Retrieve the ship name input
+        String imoNumber = imoNumberField.getText();  // Retrieve the IMO number input
+        String registration = registrationField.getText();  // Retrieve the registration code input
+        String url = urlField.getText();  // Retrieve the URL input
         int capacity;
 
-        // Validate the input fields
+        // Validate the input fields: check if any field is empty
         if (shipName.isEmpty() || imoNumber.isEmpty() || registration.isEmpty() || url.isEmpty() || capacityField.getText().isEmpty()) {
             System.out.println("Please fill in all fields.");
             return;
@@ -55,8 +64,9 @@ public class AddShipController {
             return;
         }
 
+        // Validate and parse capacity
         try {
-            capacity = Integer.parseInt(capacityField.getText());
+            capacity = Integer.parseInt(capacityField.getText());  // Parse the capacity input
         } catch (NumberFormatException e) {
             System.out.println("Capacity must be a valid number.");
             return;
@@ -71,7 +81,3 @@ public class AddShipController {
         stage.close();
     }
 }
-
-
-
-

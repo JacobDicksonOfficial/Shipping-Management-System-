@@ -1,4 +1,4 @@
-CNSHA,Saint Maria,IMO1234567,CN,www.google.com,240000,At Port
+CNSHA,Saint Maria,IMO1234567,CN,www.google.com,240000,At Sea
 CNSHA,Ocean Voyager,IMO2345678,CN,www.freightos.com,240000,At Port
 CNSHA,Sea Explorer,IMO3456789,CN,www.freightos.com,240000,At Port
 CNSHA,Maritime Queen,IMO4567890,CN,www.freightos.com,240000,At Port
@@ -8,4 +8,3 @@ CNSHA,Global Carrier,IMO7890123,CN,www.freightos.com,240000,At Port
 CNSHA,Horizon Mariner,IMO8901234,CN,www.freightos.com,240000,At Port
 CNSHA,Neptune Voyager,IMO9012345,CN,www.freightos.com,240000,At Port
 CNSHA,Titan Freighter,IMO0123456,CN,www.freightos.com,240000,At Port
-
